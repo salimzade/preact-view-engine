@@ -46,12 +46,10 @@ Under the hood, [Babel][babel] is used to compile your views to code compatible 
 Your views should be node modules that export a preact component. Let's assume you have this file in `views/index.jsx`:
 
 ```js
-import { h, Component } from 'preact';
+import { h } from 'preact';
 
-class HelloMessage extends Component {
-  render() {
-    return <div>Hello {this.props.name}</div>;
-  }
+const HelloMessage = (name) => {
+  return <div>Hello {name}</div>
 }
 
 export default HelloMessage;
@@ -72,7 +70,7 @@ app.get('/', index);
 // routes/index.js
 
 export default function(req, res){
-  res.render('index', { name: 'John' });
+  res.render('index', { name: 'Some Name' });
 };
 ```
 
@@ -84,17 +82,16 @@ Simply pass the relevant props to a layout component.
 
 `views/layouts/default.jsx`:
 ```js
-import { h, Component } from 'preact';
+import { h } from 'preact';
 
-class DefaultLayout extends Component {
-  render() {
-    return (
-      <html>
-        <head><title>{this.props.title}</title></head>
-        <body>{this.props.children}</body>
-      </html>
-    );
-  }
+const DefaultLayout = (props) => {
+  const {title, children} = props
+  return (
+    <html>
+      <head><title>{title}</title></head>
+      <body>{children}</body>
+    </html>
+  );
 }
 
 export default DefaultLayout;
@@ -102,17 +99,15 @@ export default DefaultLayout;
 
 `views/index.jsx`:
 ```js
-import { h, Component } from 'preact';
+import { h } from 'preact';
 import DefaultLayout from './layouts/default';
 
-class HelloMessage extends Component {
-  render() {
-    return (
-      <DefaultLayout title={this.props.title}>
-        <div>Hello {this.props.name}</div>
-      </DefaultLayout>
-    );
-  }
+const HelloMessage = () => {
+  return (
+    <DefaultLayout title={'title'}>
+      <div>Hello</div>
+    </DefaultLayout>
+  );
 }
 
 export default HelloMessage;
