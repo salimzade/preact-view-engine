@@ -1,9 +1,9 @@
 {
   "name": "preact-view-engine",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Express Preact View Engine SSR",
   "source": "src/index.ts",
-  "main": "dist/lib/index.js",
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/types.d.ts",
   "targets": {
