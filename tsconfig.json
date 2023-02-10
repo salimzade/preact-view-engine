@@ -2,6 +2,8 @@
   "include": ["src/**/*"],
   "compilerOptions": {
     "moduleResolution":"node",
+    "lib": ["ES2022"],
+    "declaration": true,
     "target": "ES2022",
     "module": "ES2022",
     "outDir": "./dist",
@@ -15,5 +17,6 @@
       "react": ["./node_modules/preact/compat/"],
       "react-dom": ["./node_modules/preact/compat/"]
     }
-  }
+  },
+  "exclude": ["node_modules", "**/__tests__/*", "src/interface.ts"]
 }
